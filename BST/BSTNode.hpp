@@ -3,11 +3,6 @@
 #include <iostream>
 #include <iomanip>
 
-/** Starter code for PA1, CSE 100 2016
- * Authors: Christine Alvarado, based on code by Paul Kube 
- * ADD YOUR NAME AS AN AUTHOR HERE
- */
-
 template<typename Data>
 class BSTNode {
 

@@ -1,5 +1,3 @@
-# A simple makefile for CSE 100 P1
-
 #use g++ for everything
 CC= g++  	
 

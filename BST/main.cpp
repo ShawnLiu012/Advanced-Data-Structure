@@ -9,9 +9,6 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
-    //Size of tree should be stored in local variable size.
-    //Height of tree should be stored in local variable height.
-    //Input name will be stored in a string name
     unsigned int size = 0;
     unsigned int height = 0;
     std::string name = "";
