@@ -1,5 +1,3 @@
-# A simple makefile for CSE 100 PA4
-
 CC=g++
 CXXFLAGS=-std=c++11
 LDFLAGS=
