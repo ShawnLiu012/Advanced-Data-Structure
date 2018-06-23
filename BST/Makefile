@@ -17,7 +17,7 @@ bst: testBST.o $(BSTOBJ) $(BSTHPP)
 	$(CC) $(FLAGS) -o bst testBST.o $(BSTOBJ)
 
 main: main.o $(BSTHPP)
-	$(CC) $(FLAGS) -o main main.o 
+	$(CC) $(FLAGS) -o main main.o
 
 main.o: $(BSTHPP)
 	$(CC) $(FLAGS) -c main.cpp

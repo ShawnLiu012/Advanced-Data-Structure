@@ -13,10 +13,11 @@ class BSTNode {
 
 public:
 
+  Data const data;   // the const Data in this node.
   BSTNode<Data>* left;
   BSTNode<Data>* right;
   BSTNode<Data>* parent;
-  Data const data;   // the const Data in this node.
+
 
   /** Constructor.  Initialize a BSTNode with the given Data item,
    *  no parent, and no children.
@@ -35,9 +36,6 @@ public:
 }; 
 
 
-// Function definitions
-// For a templated class it's easiest to just put them in the same file as the class declaration
-
 template <typename Data>
 BSTNode<Data>::BSTNode(const Data & d) : data(d), left(0), right(0), parent(0) {}
 
@@ -46,21 +44,47 @@ BSTNode<Data>::BSTNode(const Data & d) : data(d), left(0), right(0), parent(0) {
 template <typename Data>
 BSTNode<Data>* BSTNode<Data>::successor()
 {
-  //TODO 
-  return NULL;
+    BSTNode<Data>* next = this;
+
+    if (next->right != NULL)
+    {
+        next = next->right; 
+        while (next->left != NULL)
+            next = next->left; 
+        return next;
+    }
+    else if (next->parent != NULL && next->data < next->parent->data)
+    {
+        next = next->parent;
+        return next;
+    }
+    else
+    {
+        while (next->parent != NULL && next->parent->data < next->data)
+            next = next->parent; 
+
+        if (next->parent == NULL)
+            next = NULL; 
+        else 
+            next = next->parent; 
+
+        return next;
+    }
+
+    return 0;
 }
 
 /** Overload operator<< to print a BSTNode's fields to an ostream. */
 template <typename Data>
 std::ostream & operator<<(std::ostream& stm, const BSTNode<Data> & n) {
-  stm << '[';
-  stm << std::setw(10) << &n;                 // address of the BSTNode
-  stm << "; p:" << std::setw(10) << n.parent; // address of its parent
-  stm << "; l:" << std::setw(10) << n.left;   // address of its left child
-  stm << "; r:" << std::setw(10) << n.right;  // address of its right child
-  stm << "; d:" << n.data;                    // its data field
-  stm << ']';
-  return stm;
+    stm << '[';
+    stm << std::setw(10) << &n;                 // address of the BSTNode
+    stm << "; p:" << std::setw(10) << n.parent; // address of its parent
+    stm << "; l:" << std::setw(10) << n.left;   // address of its left child
+    stm << "; r:" << std::setw(10) << n.right;  // address of its right child
+    stm << "; d:" << n.data;                    // its data field
+    stm << ']';
+    return stm;
 }
 
 #endif // BSTNODE_HPP
